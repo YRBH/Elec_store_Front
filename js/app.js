@@ -60,52 +60,22 @@ function displayProductList(products) {
     return;
   }
 
-  productListDiv.innerHTML = '<div class="product-cards">' + products.map(product => `
+  const productListHTML = '<div class="product-cards">' + products.map(product => `
 
-    <div class="product-card" >
+    <div class="product-card" onClick ="cl(${product.id})">
+    <div class="product-image-p">
+    <img src="../img/noutbuk_klavishi_svechenie_170138_3840x2160.jpg" alt="Product Image">
+  </div>
       <p class="product-name">Название: ${product.name}</p>
       <p class="product-price">Цена: ${product.price}</p>
       <p class="product-grade">Оценка: ${product.grade}</p>
-      <a href="../pages/product.html" >Detail</a>
     </div>`).join('') + '</div>';
+
+  productListDiv.innerHTML = productListHTML;
 }
 
-
-async function getProduct(productId) {
-  try {
-    const inputId = document.getElementById('productId').value;
-    if (!inputId) {
-      throw new Error('Please enter a product ID');
-    }
-
-    const response = await fetch(`http://localhost:8080/product/${inputId}`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-    if (!data || Object.keys(data).length === 0) {
-      throw new Error('Received empty or invalid product data');
-    }
-
-    console.log('Product info:', data);
-    displayProductInfo(data);
-  } catch (error) {
-    console.error('Error getting product info:', error.message);
-  }
-}
-
-function displayProductInfo(product) {
-  const productInfoDiv = document.getElementById('productInfo');
-  productInfoDiv.innerHTML = `
-    <p>
-      ID: ${product.id}<br>
-      Название: ${product.name}<br>
-      Количество: ${product.count}<br>
-      Цена: ${product.price}<br>
-      Оценка: ${product.grade}<br>
-      Дата: ${product.date}<br>
-    </p>`;
+function cl(id) {
+  window.location.href = `product.html?id=${id}`;
 }
 
 async function updateProduct() {
@@ -367,6 +337,7 @@ function sendPostRequest() {
 
   xhr.send(postData);
 }
+
 function deletePurchaseAndRefreshProduct() {
   var purchaseId = document.getElementById("purchaseId").value;
 
