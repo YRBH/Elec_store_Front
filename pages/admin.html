@@ -2,45 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Admin</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body onload="getUsers()">
 <div class="navbar">
-  <a href="../index.html">Главная</a>
-  <a href="#news">Новости</a>
+  <a href="../index.html">Home</a>
+  <a href="news.html">News</a>
   <a class="active" href="admin.html">Admin</a>
   <a href="crud_product.html">AdminProduct</a>
-  <a href="../pages/contact.html">Контакты</a>
-  <a href="#about">О нас</a>
+  <a href="contact.html">Contacts</a>
+  <a href="aboutUs.html">About Us</a>
 </div>
-
 
 <div id="users"></div>
 
-<label for="buyerId">ID покупателя:</label>
+<label for="buyerId">Buyer ID:</label>
 <input type="text" id="buyerId" name="buyerId">
-<button onclick="getBuyerInfo()">Получить информацию о покупателе</button>
+<button onclick="getBuyerInfo()">Get Buyer Information</button>
 <div id="buyerInfo"></div>
 <br>
-<h2>Создание покупателя</h2>
+<h2>Create a Buyer</h2>
 <form id="buyerForm">
-  <label for="buyerName">Имя:</label><br>
+  <label for="buyerName">Name:</label><br>
   <input type="text" id="buyerName" name="buyerName" value=""><br>
-  <label for="buyerAge">Возраст:</label><br>
+  <label for="buyerAge">Age:</label><br>
   <input type="number" id="buyerAge" name="buyerAge" value=""><br>
-  <label for="buyerMail">Почта:</label><br>
+  <label for="buyerMail">Email:</label><br>
   <input type="email" id="buyerMail" name="buyerMail" value=""><br>
-  <label for="buyerDate">Дата рождения:</label><br>
+  <label for="buyerDate">Date of Birth:</label><br>
   <input type="date" id="buyerDate" name="buyerDate" value=""><br><br>
-  <button type="button" onclick="createBuyer()">Создать покупателя</button>
+  <button type="button" onclick="createBuyer()">Create Buyer</button>
 </form>
 <br>
 
-
-<h1>Обновить информацию о покупателе</h1>
+<h1>Update Buyer Information</h1>
 <form id="updateForm">
-  <label for="updateBuyerId">ID покупателя:</label><br>
+  <label for="updateBuyerId">Buyer ID:</label><br>
   <input type="text" id="updateBuyerId" name="id"><br><br>
   <label for="updateName">Name:</label><br>
   <input type="text" id="updateName" name="name"><br><br>
@@ -50,23 +48,19 @@
   <input type="email" id="updateMail" name="mail"><br><br>
   <label for="updateDate">Date of Birth:</label><br>
   <input type="date" id="updateDate" name="date"><br><br>
-  <button type="button" onclick="updateBuyerInfo()">Обновить информацию</button>
+  <button type="button" onclick="updateBuyerInfo()">Update Information</button>
 </form>
-<label for="buyerId">ID покупателя:</label>
+<label for="buyerId">Buyer ID:</label>
 <input type="text" id="deleteBuyerId" name="buyerId">
-<button onclick="deleteBuyer()">Удалить покупателя</button>
+<button onclick="deleteBuyer()">Delete Buyer</button>
 
-
-
-
-
-<label for="productId">ID продукта:</label>
+<label for="productId">Product ID:</label>
 <input type="text" id="productId" name="productId"><br><br>
 
-<label for="productCount">Количество продукта:</label>
+<label for="productCount">Product Count:</label>
 <input type="text" id="productCount" name="productCount"><br><br>
 
-<button onclick="sendPostRequest()">Покупка</button>
+<button onclick="sendPostRequest()">Purchase</button>
 
 <label for="purchaseId">Purchase ID:</label>
 <input type="text" id="purchaseId">

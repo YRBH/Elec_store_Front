@@ -2,52 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Product</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="navbar">
-  <a href="../index.html">Главная</a>
-  <a href="#news">Новости</a>
+  <a href="../index.html">Home</a>
+  <a href="news.html">News</a>
   <a href="admin.html">Admin</a>
   <a class="active" href="crud_product.html">AdminProduct</a>
-  <a href="../pages/contact.html">Контакты</a>
-  <a href="#about">О нас</a>
+  <a href="contact.html">Contacts</a>
+  <a href="aboutUs.html">About Us</a>
 </div>
 
-<h1>Создание нового продукта</h1>
+<h1>Create a New Product</h1>
 <form id="productForm">
-  <label for="name">Название продукта:</label>
+  <label for="name">Product Name:</label>
   <input type="text" id="name" name="productName"><br>
-  <label for="count">Количество продукта:</label>
+  <label for="count">Product Quantity:</label>
   <input type="number" id="count" name="productCount"><br>
-  <label for="price">Цена продукта:</label>
+  <label for="price">Product Price:</label>
   <input type="number" id="price" name="productPrice"><br>
-  <label for="grade">Оценка продукта:</label>
+  <label for="grade">Product Grade:</label>
   <input type="number" id="grade" name="productGrade"><br>
-  <button type="button" onclick="createProduct()">Создать продукт</button>
+  <button type="button" onclick="createProduct()">Create Product</button>
 </form>
 
-<h1>Изменение информации о продукте</h1>
+<h1>Update Product Information</h1>
 <form id="productUpdateForm">
-  <label for="productIdUpdate">Введите ID продукта:</label>
+  <label for="productIdUpdate">Enter Product ID:</label>
   <input type="number" id="productIdUpdate" name="productIdUpdate"><br>
-  <label for="productNameUpdate">Название продукта:</label>
+  <label for="productNameUpdate">Product Name:</label>
   <input type="text" id="productNameUpdate" name="productNameUpdate"><br>
-  <label for="productCountUpdate">Количество продукта:</label>
+  <label for="productCountUpdate">Product Quantity:</label>
   <input type="number" id="productCountUpdate" name="productCountUpdate"><br>
-  <label for="productPriceUpdate">Цена продукта:</label>
+  <label for="productPriceUpdate">Product Price:</label>
   <input type="number" id="productPriceUpdate" name="productPriceUpdate"><br>
-  <label for="productGradeUpdate">Оценка продукта:</label>
+  <label for="productGradeUpdate">Product Grade:</label>
   <input type="number" id="productGradeUpdate" name="productGradeUpdate"><br>
-  <button type="button" onclick="updateProduct()">Изменить информацию о продукте</button>
+  <button type="button" onclick="updateProduct()">Update Product Information</button>
 </form>
 
-<h1>Удаление продукта</h1>
+<h1>Delete Product</h1>
 <form id="productDeleteForm">
-  <label for="productIdDelete">Введите ID продукта для удаления:</label>
+  <label for="productIdDelete">Enter Product ID to Delete:</label>
   <input type="number" id="productIdDelete" name="productIdDelete"><br>
-  <button type="button" onclick="deleteProduct()">Удалить продукт</button>
+  <button type="button" onclick="deleteProduct()">Delete Product</button>
 </form>
 
 

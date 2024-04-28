@@ -6,7 +6,7 @@ async function createProduct() {
     const inputGrade = parseInt(document.getElementById('grade').value);
 
     if (!inputName || isNaN(inputCount) || isNaN(inputPrice) || isNaN(inputGrade)) {
-      throw new Error('Пожалуйста, заполните все поля корректно');
+      throw new Error('Please fill out all fields correctly');
     }
 
     const data = {
@@ -25,13 +25,13 @@ async function createProduct() {
     });
 
     if (!response.ok) {
-      throw new Error('Ошибка сети: ' + response.statusText);
+      throw new Error('Network error: ' + response.statusText);
     }
 
     const responseData = await response.json();
-    console.log('Продукт успешно создан:', responseData);
+    console.log('Product successfully created:', responseData);
   } catch (error) {
-    console.error('Ошибка при создании продукта:', error.message);
+    console.error('Error creating product:', error.message);
   }
 }
 
@@ -40,14 +40,14 @@ async function getProducts() {
     const response = await fetch('http://localhost:8080/product');
 
     if (!response.ok) {
-      throw new Error('Ошибка сети: ' + response.statusText);
+      throw new Error('Network error: ' + response.statusText);
     }
 
     const data = await response.json();
-    console.log('Список продуктов:', data);
-    displayProductList(data); // Вызываем функцию для отображения списка продуктов
+    console.log('Grocery list:', data);
+    displayProductList(data);
   } catch (error) {
-    console.error('Ошибка при получении списка продуктов:', error.message);
+    console.error('Error getting product list:', error.message);
   }
 }
 
@@ -56,7 +56,7 @@ function displayProductList(products) {
   productListDiv.innerHTML = '';
 
   if (products.length === 0) {
-    productListDiv.textContent = 'Список продуктов пуст';
+    productListDiv.textContent = 'Product list is empty';
     return;
   }
 
@@ -66,9 +66,9 @@ function displayProductList(products) {
     <div class="product-image-p">
     <img src="../img/noutbuk_klavishi_svechenie_170138_3840x2160.jpg" alt="Product Image">
   </div>
-      <p class="product-name">Название: ${product.name}</p>
-      <p class="product-price">Цена: ${product.price}</p>
-      <p class="product-grade">Оценка: ${product.grade}</p>
+      <p class="product-name">Name: ${product.name}</p>
+      <p class="product-price">Price: ${product.price}</p>
+      <p class="product-grade">Grade: ${product.grade}</p>
     </div>`).join('') + '</div>';
 
   productListDiv.innerHTML = productListHTML;
@@ -152,7 +152,7 @@ function createBuyer() {
   })
     .then(response => response.json())
     .then(data => {
-      console.log("Полученный ответ от сервера:", data);
+      console.log("Received response from the server:", data);
       document.getElementById("buyerName").value = "";
       document.getElementById("buyerAge").value = "";
       document.getElementById("buyerMail").value = "";
@@ -160,7 +160,7 @@ function createBuyer() {
       location.reload();
     })
     .catch(error => {
-      console.error("Произошла ошибка:", error);
+      console.error("An error has occurred:", error);
     });
   location.reload();
 
@@ -172,9 +172,9 @@ function getUsers() {
   xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
       var users = JSON.parse(xhr.responseText);
-      displayUserList(users); // Вызываем функцию для отображения списка пользователей
+      displayUserList(users);
     } else {
-      document.getElementById('users').innerHTML = 'Ошибка: ' + xhr.status;
+      document.getElementById('users').innerHTML = 'Error: ' + xhr.status;
     }
   };
   xhr.send();
@@ -185,7 +185,7 @@ function displayUserList(users) {
   userListDiv.innerHTML = '';
 
   if (users.length === 0) {
-    userListDiv.textContent = 'Список пользователей пуст';
+    userListDiv.textContent = 'User list is empty';
     return;
   }
 
@@ -194,11 +194,11 @@ function displayUserList(users) {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Имя</th>
-          <th>Возраст</th>
-          <th>Дата рождения</th>
-          <th>Email</th>
-          <th>Дата регистрации</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Date of Birth</th>
+          <th>E-mail</th>
+          <th>Registration date</th>
         </tr>
       </thead>
       <tbody>
@@ -229,22 +229,19 @@ function getBuyerInfo() {
       return response.json();
     })
     .then(data => {
-      // Формирование HTML-разметки информации о покупателе
       const userInfoHTML = `
                         <div class="user-item">
                             <p class="user-id">ID: ${data.id}</p>
-                            <p class="user-name">Имя: ${data.name}</p>
-                            <p class="user-age">Возраст: ${data.age}</p>
-                            <p class="user-date-of-birthday">Дата рождения: ${data.dateOfBirthday}</p>
-                            <p class="user-mail">Email: ${data.mail}</p>
-                            <p class="user-registration-date">Дата регистрации: ${data.registrationDate}</p>
+                            <p class="user-name">Name: ${data.name}</p>
+                            <p class="user-age">Age: ${data.age}</p>
+                            <p class="user-date-of-birthday">Date of Birth: ${data.dateOfBirthday}</p>
+                            <p class="user-mail">E-mail: ${data.mail}</p>
+                            <p class="user-registration-date">Registration date: ${data.registrationDate}</p>
                         </div>
                     `;
-
-      // Вывод информации о покупателе на страницу
       document.getElementById('buyerInfo').innerHTML = userInfoHTML;
     })
-    .catch(error => console.error('Ошибка при получении данных о покупателе:', error.message));
+    .catch(error => console.error('Error while retrieving customer data:', error.message));
 }
 
 async function updateBuyerInfo() {
@@ -275,18 +272,16 @@ async function updateBuyerInfo() {
       location.reload();
     }
 
-    console.log('Полученный ответ от сервера:', await response.json());
+    console.log('Received response from the server:', await response.json());
 
-    // Очищаем поля формы после успешной отправки данных
     document.getElementById('updateBuyerId').value = '';
     document.getElementById('updateName').value = '';
     document.getElementById('updateAge').value = '';
     document.getElementById('updateMail').value = '';
     document.getElementById('updateDate').value = '';
 
-    // Можете добавить здесь код для обновления интерфейса после успешного обновления информации о покупателе
   } catch (error) {
-    console.error('Произошла ошибка:', error);
+    console.error('An error has occurred:', error);
   }
 }
 
@@ -301,7 +296,6 @@ function deleteBuyer() {
         throw new Error('Network response was not ok');
       }
       console.log('Buyer deleted successfully');
-      // Дополнительные действия после успешного удаления
     })
     .catch(error => {
       console.error('There was a problem with your fetch operation:', error);
@@ -327,10 +321,10 @@ function sendPostRequest() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        console.log('Успешный ответ от сервера:', xhr.responseText);
+        console.log('Successful response from the server:', xhr.responseText);
         location.reload();
       } else {
-        console.error('Произошла ошибка:', xhr.status);
+        console.error('An error has occurred:', xhr.status);
       }
     }
   };
@@ -341,7 +335,6 @@ function sendPostRequest() {
 function deletePurchaseAndRefreshProduct() {
   var purchaseId = document.getElementById("purchaseId").value;
 
-  // Отправляем запрос на удаление покупки
   var xhr = new XMLHttpRequest();
   xhr.open("DELETE", "http://localhost:8080/purchases/" + purchaseId, true);
   xhr.onreadystatechange = function () {
@@ -349,7 +342,6 @@ function deletePurchaseAndRefreshProduct() {
       if (xhr.status === 200) {
         alert("Purchase deleted successfully!");
 
-        // Получаем данные продукта и обновляем количество
         getProductDataAndUpdateCount();
       } else {
         alert("Error deleting purchase. Status: " + xhr.status);
@@ -362,7 +354,6 @@ function deletePurchaseAndRefreshProduct() {
 function getProductDataAndUpdateCount() {
   var purchaseId = document.getElementById("purchaseId").value;
 
-  // Получаем данные о продукте
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://localhost:8080/purchases/" + purchaseId + "/productData", true);
   xhr.onreadystatechange = function () {
@@ -370,10 +361,7 @@ function getProductDataAndUpdateCount() {
       if (xhr.status === 200) {
         var productData = JSON.parse(xhr.responseText);
 
-        // Выполняем логику для обновления количества продукта
         var newProductCount = calculateNewProductCount(productData);
-
-        // Обновляем количество продукта на странице
         updateProductCount(newProductCount);
       } else {
         alert("Error fetching product data. Status: " + xhr.status);
@@ -384,8 +372,6 @@ function getProductDataAndUpdateCount() {
 }
 
 function calculateNewProductCount(productData) {
-  // Ваша логика для вычисления нового количества продукта на основе полученных данных
-  // Например:
   var currentCount = productData.currentCount;
   var quantityReturned = productData.quantityReturned;
   var newProductCount = currentCount + quantityReturned;
@@ -394,8 +380,6 @@ function calculateNewProductCount(productData) {
 }
 
 function updateProductCount(newProductCount) {
-  // Обновляем количество продукта на странице
-  // Например:
   document.getElementById("productCount").innerText = newProductCount;
 }
 
