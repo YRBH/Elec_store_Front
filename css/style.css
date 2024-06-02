@@ -494,6 +494,75 @@ footer.about {
   background-color: #f4f4f4;
   text-align: center;
 }
+#textarea, #message {
+  width: 100%;
+  height: 300px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+
+
+#titleNews {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Контейнер для списка новостей */
+#newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px; /* Ширина контейнера новостей */
+  margin: 0 auto; /* Центрируем контейнер на странице */
+}
+
+/* Стили для каждой новости */
+.news-item {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Стили для заголовка новости */
+.news-item h2 {
+  color: #333;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Стили для текста новости */
+.news-item p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+#titleAbout {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Контейнер для списка новостей */
+#aboutUsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 800px; /* Ширина контейнера новостей */
+  margin: 0 auto; /* Центрируем контейнер на странице */
+}
+
+
 
 
 

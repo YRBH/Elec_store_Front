@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onunload="getNews()">
 <div class="navbar">
   <a href="../index.html">Home</a>
   <a class="active" href="news.html">News</a>
@@ -14,39 +15,11 @@
   <a href="aboutUs.html">About Us</a>
 </div>
 
-<header>
-  <h1>News</h1>
-</header>
-<main>
-  <article class="news">
-    <h2 class="news-date">April 20, 2024</h2>
-    <h3 class="news-title">New Smartphone Collection Available for Pre-order!</h3>
-    <p class="news-content">We're excited to announce that our store is now taking pre-orders for the new smartphone collection from leading brands. Be the first to experience the new features and design!</p>
-  </article>
-  <article class="news">
-    <h2 class="news-date">April 18, 2024</h2>
-    <h3 class="news-title">Winners of the "Photo with Electronic store Products" Contest!</h3>
-    <p class="news-content">Congratulations to the winners of our contest! Thank you to everyone who participated and shared their creative photos with our products. Check out who won and claim your prizes!</p>
-  </article>
-  <article class="news">
-    <h2 class="news-date">April 15, 2024</h2>
-    <h3 class="news-title">Headphone Assortment Update!</h3>
-    <p class="news-content">We've added new headphone models with improved sound quality and stylish designs! Visit our website to choose headphones to your liking.</p>
-  </article>
-  <article class="news">
-    <h2 class="news-date">April 10, 2024</h2>
-    <h3 class="news-title">Opening of a New Store!</h3>
-    <p class="news-content">We're excited to announce the opening of a new store in your city! We invite everyone to visit our new store located at [Address]. See you there for some shopping!</p>
-  </article>
-  <article class="news">
-    <h2 class="news-date">April 5, 2024</h2>
-    <h3 class="news-title">Special Offer on Televisions!</h3>
-    <p class="news-content">Today only! Discounts on a wide range of televisions from various brands and sizes. Don't miss the opportunity to upgrade your home theater!</p>
-  </article>
-</main>
-<footer>
-  <p>Subscribe to our newsletter and stay updated with the latest news!</p>
-</footer>
+<h1 id = "titleNews">News</h1>
+<div id="newsList"></div>
 
+<script src="../js/news.js"></script>
 </body>
 </html>
+
+

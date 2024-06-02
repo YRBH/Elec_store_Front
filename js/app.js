@@ -55,6 +55,8 @@ function displayProductList(products) {
   const productListDiv = document.getElementById('productList');
   productListDiv.innerHTML = '';
 
+  console.log(products)
+
   if (products.length === 0) {
     productListDiv.textContent = 'Product list is empty';
     return;
@@ -62,13 +64,13 @@ function displayProductList(products) {
 
   const productListHTML = '<div class="product-cards">' + products.map(product => `
 
-    <div class="product-card" onClick ="cl(${product.id})">
+    <div class="product-card" onClick ="cl(${product.product.id})">
     <div class="product-image-p">
-    <img src="../img/noutbuk_klavishi_svechenie_170138_3840x2160.jpg" alt="Product Image">
-  </div>
-      <p class="product-name">Name: ${product.name}</p>
-      <p class="product-price">Price: ${product.price}</p>
-      <p class="product-grade">Grade: ${product.grade}</p>
+        <img src="data:image/jpeg;base64,${product.images[0]}" alt="Product Image">
+      </div>
+      <p class="product-name">Name: ${product.product.name}</p>
+      <p class="product-price">Price: ${product.product.price}</p>
+      <p class="product-grade">Grade: ${product.product.grade}</p>
     </div>`).join('') + '</div>';
 
   productListDiv.innerHTML = productListHTML;

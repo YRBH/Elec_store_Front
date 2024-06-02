@@ -53,22 +53,42 @@ async function getProduct() {
 
 function displayProductInfo(product) {
   const productInfoDiv = document.getElementById('productInfo');
+
+  // Format the date
+  const rawDate = new Date(product.product.date);
+  const formattedDate = rawDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  let imagesHtml = '';
+  for (let i = 0; i < 3; i++) {
+    if (product.images[i]) {
+      imagesHtml += `
+        <div class="product-image-p">
+          <img src="data:image/jpeg;base64,${product.images[i]}" alt="Product Image ${i + 1}">
+        </div>`;
+    }
+  }
+
   productInfoDiv.innerHTML = `
-   <div class="product-card-p">
-  <div class="product-image-p">
-    <img src="../img/noutbuk_klavishi_svechenie_170138_3840x2160.jpg" alt="Product Image">
-  </div>
-  <div class="product-details-p">
-    <div class="product-title-p">${product.name}</div>
-    <div class="product-info-p">
-      <span data-label="ID"> ${product.id}</span>
-      <span data-label="Count">${product.count}</span>
-      <span data-label="Price">${product.price}</span>
-      <span data-label="Grade">${product.grade}</span>
-      <span data-label="Date">${product.date}</span>
-    </div>
-  </div>
-</div>
-`;
+    <div class="product-card-p">
+      ${imagesHtml}
+      <div class="product-details-p">
+        <div class="product-title-p">${product.product.name}</div>
+        <div class="product-info-p">
+          <span data-label="ID"> ${product.product.id}</span>
+          <span data-label="Count">${product.product.count}</span>
+          <span data-label="Price">${product.product.price}</span>
+          <span data-label="Grade">${product.product.grade}</span>
+          <span data-label="Date">${formattedDate}</span>
+          <button > Buy product</button>
+          <button> Add to cart</button>
+        </div>
+      </div>
+    </div>`;
 }
+
+
 
