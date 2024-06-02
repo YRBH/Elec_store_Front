@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="navbar">
+  <a href="../index.html">Home</a>
+  <a href="news.html">News</a>
+  <a class="active" href="admin.html">Admin</a>
+  <a href="contact.html">Contacts</a>
+  <a href="aboutUs.html">About Us</a>
+</div>
+<br>
+<div class="navbar">
+  <a href="admin.html">AdminUser</a>
+  <a href="crud_product.html">AdminProduct</a>
+  <a href="adminNews.html">AdminNews</a>
+  <a class="active" href="adminAboutUs.html">AdminAboutUs</a>
+</div>
+
+<h1 id="form-heading">Создание О нас</h1>
+<form id="newsForm" onsubmit="submitForm(event)">
+  <label for="title" id="title-label">Заголовок:</label>
+  <input type="text" id="title" name="title" required><br><br>
+  <label for="textarea" id="textarea-label">Текст :</label>
+  <textarea id="textarea" name="text" required></textarea><br><br>
+  <button type="submit" id="submit-button">Создать</button>
+</form>
+<div id="titleAbout">About Us</div>
+<div id="aboutUsList"></div>
+
+
+<script src="../js/aboutUs.js"> </script>
+
+
+
+
+<script src="../js/aboutUsEdit.js"> </script>
+</body>
+</html>

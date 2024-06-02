@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="navbar">
+  <a href="../index.html">Home</a>
+  <a href="news.html">News</a>
+  <a class="active" href="admin.html">Admin</a>
+  <a href="contact.html">Contacts</a>
+  <a href="aboutUs.html">About Us</a>
+</div>
+<br>
+<div class="navbar">
+  <a href="admin.html">AdminUser</a>
+  <a href="crud_product.html">AdminProduct</a>
+  <a class="active" href="adminNews.html">AdminNews</a>
+  <a href="adminAboutUs.html">AdminAboutUs</a>
+</div>
+
+<h1>Создание новости</h1>
+<form id="newsForm" onsubmit="submitForm(event)">
+  <label for="title">Заголовок:</label>
+  <input type="text" id="title" name="title" required><br><br>
+  <label for="textarea">Текст новости:</label>
+  <textarea id="textarea" name="text" required></textarea><br><br>
+  <button type="submit">Создать новость</button>
+</form>
+
+<script src="../js/news.js"></script>
+</body>
+</html>
