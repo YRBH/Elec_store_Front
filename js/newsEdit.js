@@ -4,67 +4,61 @@ function submitForm(event) {
   const title = document.getElementById('title').value;
   const text = document.getElementById('textarea').value;
 
-  const aboutUs = {
+  const news = {
     title: title,
     text: text
   };
 
-  console.log('Отправка данных:', aboutUs);
+  console.log('Отправка данных:', news);
 
-  fetch('http://localhost:8080/aboutus', {
+  fetch('http://localhost:8080/news', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(aboutUs)
+    body: JSON.stringify(news)
   })
     .then(response => {
       console.log('Ответ сервера:', response);
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
-      return response.text();  // Обрабатываем ответ как текст
+      return response.text();
     })
     .then(data => {
       console.log('Ответ от сервера в виде текста:', data);
       try {
-        // Пробуем парсить текст как JSON
         const jsonData = JSON.parse(data);
         console.log('Парсинг ответа JSON:', jsonData);
         alert('Новость успешно создана!');
       } catch (e) {
-        // Если это не JSON, просто выводим текст ответа
         console.warn('Ответ не в формате JSON:', data);
-
       }
     })
     .catch((error) => {
       console.error('Ошибка:', error);
-
     });
   location.reload();
 }
 
 
-function getAboutUs() {
-  fetch("http://localhost:8080/aboutus")
+function getNews() {
+  fetch("http://localhost:8080/news")
     .then(response => response.json())
     .then(data => {
-      // Обработка полученных данных (списка новостей)
-      displayAboutUs(data);
+      displayNews(data);
     })
     .catch(error => {
       console.error('Error fetching news:', error);
     });
 }
 
-getAboutUs()
+getNews()
 
-function displayAboutUs(about) {
+function displayNews(about) {
   const newsListDiv = document.getElementById("newsList");
-  newsListDiv.innerHTML = ""; // Очищаем содержимое перед добавлением новых элементов
+  newsListDiv.innerHTML = "";
 
-  // Создаем элементы для каждой новости и добавляем их в newsListDiv
   about.forEach(newsItem => {
     const newsItemDiv = document.createElement("div");
     newsItemDiv.innerHTML = `
@@ -79,18 +73,17 @@ function displayAboutUs(about) {
 }
 
 function del(id) {
-  fetch(`http://localhost:8080/aboutus/${id}`, {
+  fetch(`http://localhost:8080/news/${id}`, {
     method: 'DELETE',
   });
 
   location.reload();
-
 }
 
 function edit(id) {
   console.log(id)
   // Запрос текущих данных новости
-  fetch(`http://localhost:8080/aboutus/${id}`)
+  fetch(`http://localhost:8080/news/${id}`)
     .then(response => response.json())
     .then(data => {
       // Создание формы редактирования
@@ -111,7 +104,7 @@ function submitEdit(id) {
   const title = document.getElementById('editTitle').value;
   const text = document.getElementById('editText').value;
 
-  fetch(`http://localhost:8080/aboutus/${id}`, {
+  fetch(`http://localhost:8080/news/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -123,7 +116,7 @@ function submitEdit(id) {
         throw new Error('Network response was not ok');
       }
       closeEdit();
-      location.reload(); // Обновить страницу, чтобы показать обновленные данные
+      location.reload();
     })
     .catch(error => {
       console.error('Ошибка при обновлении:', error);
@@ -131,7 +124,7 @@ function submitEdit(id) {
 }
 
 function closeEdit() {
-  const form = document.getElementById('editHorm');
+  const form = document.getElementById('editForm');
   if (form) {
     form.remove();
   }

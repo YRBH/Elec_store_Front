@@ -63,7 +63,7 @@ function getAboutUs() {
 getAboutUs()
 
 function displayAboutUs(about) {
-  const newsListDiv = document.getElementById("aboutUsList");
+  const newsListDiv = document.getElementById("newsList");
   newsListDiv.innerHTML = ""; // Очищаем содержимое перед добавлением новых элементов
 
   // Создаем элементы для каждой новости и добавляем их в newsListDiv

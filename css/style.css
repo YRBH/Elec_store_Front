@@ -553,7 +553,7 @@ footer.about {
 }
 
 /* Контейнер для списка новостей */
-#aboutUsList {
+#newsList {
   display: flex;
   flex-direction: column;
   gap: 20px;
